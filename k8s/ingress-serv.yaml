@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-serv
+  annotations:
+    kubernetes.io/ingress.class: 'nginx'
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  rules:
+    - host: ecommence.dev
+      http:
+        paths:
+          - path: /api/users/?(.*)
+            backend:
+              serviceName: customer-serv
+              servicePort: 3000
+          - path: /api/goods/?(.*)
+            backend:
+              serviceName: product-serv
+              servicePort: 3000
+          - path: /api/orders/?(.*)
+            backend:
+              serviceName: order-serv
+              servicePort: 3000
+          - path: /api/payment/?(.*)
+            backend:
+              serviceName: payment-serv
+              servicePort: 3000
+          - path: /?(.*)
+            backend:
+              serviceName: client-serv
+              servicePort: 3000
