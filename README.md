@@ -1,3 +1,3 @@
 # microservices-e-commerce
 
-This just the fork of orginal project which was host on DAL gitlab.
+This just the fork of the original project which was hosted on DAL GitLab.
